@@ -1,6 +1,6 @@
 /// @file controllers.js
 /// @brief AngularJS controllers
-
+// TODO refactoring controllers into separate modules
 angular.module('checkerApp')
 	.controller('aboutCtrl', //versions of system modules
 				['$scope', '$timeout','serverApi',
@@ -10,11 +10,6 @@ angular.module('checkerApp')
 					 	 function(data) {
 					 		 $scope.server_ver = data;
 					 	 });
-					 $scope.client_ver = client_ver_major.toString() + '.' + client_ver_minor.toString() + '.' + client_ver_compilation.toString(); //from version.js file
-					// TODO hardcoded number to check if the host server work
-					 serverApi.getPlayer(function(){
-
-					},1);
 				 	 var REFRESH_INTERVAL = 1000; //ms
 					 var call = function() { //function called periodically
 						 serverApi.getCurrent(
@@ -27,12 +22,19 @@ angular.module('checkerApp')
 
 				 }])
 	.controller('playerCtrl',
-				['$scope', '$timeout','serverApi',
+				['$scope', '$timeout','serverApi', '$routeParams',
+				 function($scope, $timeout, serverApi, $routeParams) {
+					 var player_id = $routeParams['id'];
+					 console.log(player_id);
+					 serverApi.getPlayer(function(data){
+						 $scope.player = data;
+					 },player_id);
+				 }])
+	.controller('playersCtrl',	['$scope', '$timeout','serverApi',
 				 function($scope, $timeout, serverApi) {
-					// TODO hardcoded number to check if the host server work
-					 serverApi.getPlayer(function(){
-
-					},1);
-				 }]);
+					 serverApi.getAllPlayers(function(data){
+						 $scope.players = data;
+					 });
+				 }])
 
 

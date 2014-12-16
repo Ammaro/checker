@@ -78,14 +78,11 @@ elif env['r'] == 'd':
     print """ nothing to do """
 
 elif env['t'] == 'w':
-    os.system('python web/manage.py test version current calcpy')
+    # TODO python tests configuration
+    pass
 elif env['t'] == 'j':
-    child_process = subprocess.Popen('python client/tests/srv.py ', shell=True, stdout=subprocess.PIPE)
-    os.system( WWW_BROWSER + ' ' + os.getcwd() + ' client/unit_test_out.html --disable-web-security')
-    if platform.system() == "Linux":
-        os.system("kill " + str(child_process.pid))
-    else:
-        os.system('taskkill /F /T /PID %d' % child_process.pid)
+    # TODO javascript tests configuration
+    pass
 elif env['cov'] == 1:
     if platform.system() == "Linux":
         os.system("coverage run --source web/ web/manage.py test version current calcpy")

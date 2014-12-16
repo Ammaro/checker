@@ -44,13 +44,14 @@ mimetype.assign = (
   ".js" => "text/javascript"
 )
 
+
 static-file.exclude-extensions = (".py")
 server.modules += ( "mod_fastcgi" )
 #server.modules += ( "mod_accesslog" )
 
 #### accesslog format (enable for using a proxy, like Pound, in front of Lighttpd)
 #accesslog.format       = "%h %t %r %>s %b time: %T [s]"
-#accesslog.filename       = log_root + "/access.log"
+accesslog.filename       = log_root + "/access.log"
 """
     file=open(str(target[0]),'w')
     server_root_path = os.path.abspath('client')

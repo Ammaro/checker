@@ -13,11 +13,11 @@ angular.module('checkerApp')
                      return $http.get(this.baseURL + 'current/get').success(callback);
                  };
                  this.getPlayer = function(callback, playerId) {
-                     return $http({'url': this.baseURL + 'game/getPlayer',
+                     return $http({'url': this.baseURL + 'game/players',
                                    'method':'GET',
                                    params:{'id':playerId}}).success(callback);
                  };
                  this.getAllPlayers = function(callback) {
-                     return $http.get(this.baseURL + 'game/getAll').success(callback);
+                     return $http.get(this.baseURL + 'game/players').success(callback);
                  };
              });

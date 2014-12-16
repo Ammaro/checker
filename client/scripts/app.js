@@ -7,11 +7,14 @@ angular.module('checkerApp', ['ngRoute'] )
                  $routeProvider.when('/about', {
                      templateUrl: 'views/about.html',
                      controller: 'aboutCtrl'
-                 }).when('/profile', {
-                         templateUrl: 'views/player_profile.html',
+                 }).when('/player/:id', {
+                         templateUrl: 'views/player.html',
                          controller: 'playerCtrl'
+                 }).when('/players', {
+                         templateUrl:'views/players.html',
+                         controller: 'playersCtrl'
                  }).otherwise( {
-                     templateUrl: '/404.html',
+                     templateUrl: 'views/about.html',
                      controller: ''
                  });
              }]);

@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # help python find dll libraries for interop. with c++
 # TODO portability
 os.environ['PATH'] += 'C:\\Boost\\lib;'
-sys.path += '.'
+#sys.path += '.'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'kw$@=pa)zdjmjx^6z65-+x3c5j+^ydyj1!t!@_q+z2qw06&1*i'
