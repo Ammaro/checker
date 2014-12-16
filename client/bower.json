@@ -1,0 +1,23 @@
+{
+  "name": "checker",
+  "version": "0.0.0",
+  "description": "SweetSpot",
+  "private": true,
+  "dependencies": {
+      "angular": "",
+      "angular-resource" : "",
+      "angular-route" : "",
+      "jquery": "",
+      "qunit": "",
+      "blanket": ""
+  },
+  "main": "client/index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "appPath":"app"
+}

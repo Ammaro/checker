@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html ng-app="checkerApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>CheckerApp</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+</head>
+
+<body>
+<div ng-view>
+
+</div>
+</body>
+
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/qunit/qunit/qunit.js"></script>
+<script src="bower_components/blanket/dist/qunit/blanket.js"></script>
+<!-- endbower -->
+<script type="text/javascript" src="scripts/version.js" data-cover></script>
+<script type="text/javascript" src="scripts/app.js" data-cover></script>
+<script type="text/javascript" src="scripts/services.js" data-cover></script>
+<script type="text/javascript" src="scripts/controllers.js" data-cover></script>
+
+</html>
