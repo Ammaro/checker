@@ -1,0 +1,64 @@
+# -*- mode: Python; -*-
+
+## @file calc/SConscript
+# @brief scons build for calc C++ library
+
+import os, platform, shutil, re
+
+Import('env')
+
+Import('MYAPP_VER_MAJOR')
+Import('MYAPP_VER_MINOR')
+Import('MYAPP_VER_COMPILATION')
+
+
+def copyLibBuilder(target, source, env):
+    '''kopiuje biblioteke'''
+    shutil.copy(str(source[0]), str(target[0]))
+    return
+
+
+#sciezki
+env.Append(ENV={'PATH': os.environ['PATH']})
+
+if platform.system() == "Linux":
+    env.Append(CPPPATH=['/usr/include/python2.7'])
+    env.Append(LIBPATH=['/usr/lib/python2.7'])
+
+    env.Append(CPPFLAGS='-Wall -pedantic -pthread')
+    env.Append(LINKFLAGS='-Wall -pthread')
+
+    env.Append(LIBS=['boost_python'])
+elif platform.system() == "Windows":
+    env.Append(CPPPATH=[Dir('C:/Boost/include/boost-1_57'),
+                        Dir('C:/Python27/include'),
+                        # the libraries below are needed somehow
+                        Dir('C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/include'),
+                        Dir('C:/Program Files (x86)/Windows Kits/8.1/Include/shared')])
+    env.Append(LIBPATH=[Dir('C:/Boost/lib'),
+                        Dir('C:/Python27/libs'),
+                        # Without libraries below it doesn't compile nor link
+                        Dir('C:/Program Files (x86)/Windows Kits/8.1/Lib/winv6.3/um/x64'),
+                        Dir('C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/lib/amd64')])
+
+    env.Append(CPPFLAGS=' /EHsc /MD /D "WIN32" /D "_CONSOLE" /W4')
+    env.Append(LINKFLAGS=' /SUBSYSTEM:WINDOWS /MACHINE:X64')
+else:
+    print platform.system() + " not supported"
+
+# build C++ library
+# TODO one cpp src folder will corespond to one python module
+# We need to make it automatic
+
+cpplib = env.SharedLibrary(target='game', source=['src/game.cpp'])
+
+# deploy
+if platform.system() == "Linux":
+    target = '../web/cpp/game.so'
+elif platform.system() == "Windows":
+    target = '../web/cpp/game.pyd'
+env.Command(target, cpplib, copyLibBuilder)
+
+
+
+
