@@ -13,14 +13,6 @@ Import('MYAPP_VER_MINOR')
 Import('MYAPP_VER_COMPILATION')
 Import('WEB_SRV_PREFIX WEB_SRV_HOST WEB_SRV_PORT WEB_CLIENT_HOST WEB_CLIENT_PORT')
 
-def build_client_version( target, source, env):
-   file=open(str(target[0]),'w')
-   file.write('client_ver_major = ' + MYAPP_VER_MAJOR + '\n')
-   file.write('client_ver_minor = "' + MYAPP_VER_MINOR + '"\n')
-   file.write('client_ver_compilation = ' + MYAPP_VER_COMPILATION + '\n')
-   file.write('client_server_prefix = "' + WEB_SRV_PREFIX + '"\n' )
-   file.close()
-   return
 
 def build_lighttpd_conf(target, source, env):
     configText = """
@@ -47,7 +39,7 @@ mimetype.assign = (
 
 static-file.exclude-extensions = (".py")
 server.modules += ( "mod_fastcgi" )
-#server.modules += ( "mod_accesslog" )
+server.modules += ( "mod_accesslog" )
 
 #### accesslog format (enable for using a proxy, like Pound, in front of Lighttpd)
 #accesslog.format       = "%h %t %r %>s %b time: %T [s]"
@@ -72,12 +64,9 @@ accesslog.filename       = log_root + "/access.log"
     return
 
 
-# #install client files
-client_ver_name = 'scripts/version.js'
-env.Command(client_ver_name, [], build_client_version )
-
 #build lighttpd config
 lighttd_conf = 'lighttpd.develop'
 env.Command(lighttd_conf, [], build_lighttpd_conf )
 env.SideEffect('lighttpd.log', lighttd_conf)
 env.SideEffect('lighttpd.pid', lighttd_conf)
+env.SideEffect('access.log', lighttd_conf)

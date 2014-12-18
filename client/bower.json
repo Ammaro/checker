@@ -1,7 +1,6 @@
 {
   "name": "checker",
   "version": "0.0.0",
-  "description": "SweetSpot",
   "private": true,
   "dependencies": {
       "angular": "",
@@ -11,7 +10,7 @@
       "qunit": "",
       "blanket": ""
   },
-  "main": "client/index.html",
+  "main": "index.html",
   "ignore": [
     "**/.*",
     "node_modules",

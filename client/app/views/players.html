@@ -1,0 +1,21 @@
+<!--TODO players view -->
+<div>
+    <table class="table">
+        <thead>
+            <th>avatar</th>
+            <th>name</th>
+            <th>ranking</th>
+            <th>lost</th>
+            <th>won</th>
+            <th>draw</th>
+        </thead>
+        <tr ng-repeat="player in players">
+            <td><img width='32' height='32' ng-src="{{player.avatarUrl}}" alt="playerAvatar"/></td>
+            <td><a ng-href="#/player/{{player.id}}"> {{player.name}}</a></td>
+            <td>{{player.rank}}</td>
+            <td>{{$index}}</td>
+            <td>{{$index}}</td>
+            <td>{{$index}}</td>
+        </tr>
+    </table>
+</div>

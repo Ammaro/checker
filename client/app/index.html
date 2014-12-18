@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html ng-app="checkerApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>CheckerApp</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+</head>
+<body>
+<div class="menubar">
+    <ul class="menu">
+        <li class="menuitem">
+            <a href="#">Play</a>
+        </li>
+        <li class="menuitem">
+            <a href="#/about">Tutorial</a>
+        </li>
+        <li class="menuitem">
+            <a href="#/players">Ranking</a>
+        </li>
+        <li class="menuitem">
+            <a ng-href="#/player/1" >Profile</a>
+        </li>
+
+        <li class="menuitem">
+            <a href="#">Settings</a>
+        </li>
+        <li class="menuitem">
+            <a href="#">Login</a>
+        </li>
+        <li class="menuitem">
+            <a href="#/register">Register</a>
+        </li>
+        <li class="menuitem toggle-footer">
+            <a href="#">Show footer</a>
+        </li>
+    </ul>
+</div>
+<div class="banner"></div>
+<div ng-view>
+
+</div>
+</body>
+
+<div class="footer">
+    <div class="green">
+        <h5>Intel corporation something new dont hesitate to call us</h5>
+    </div>
+</div>
+
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/qunit/qunit/qunit.js"></script>
+<script src="bower_components/blanket/dist/qunit/blanket.js"></script>
+<!-- endbower -->
+<script type="text/javascript" src="scripts/conf.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/services.js"></script>
+<script type="text/javascript" src="scripts/controllers.js"></script>
+
+</html>

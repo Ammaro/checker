@@ -13,14 +13,13 @@ Import('MYAPP_VER_COMPILATION')
 
 
 def copyLibBuilder(target, source, env):
-    '''kopiuje biblioteke'''
+    print("it is ok")
     shutil.copy(str(source[0]), str(target[0]))
     return
 
 
 #sciezki
 env.Append(ENV={'PATH': os.environ['PATH']})
-
 if platform.system() == "Linux":
     env.Append(CPPPATH=['/usr/include/python2.7'])
     env.Append(LIBPATH=['/usr/lib/python2.7'])
@@ -51,12 +50,13 @@ else:
 # We need to make it automatic
 
 cpplib = env.SharedLibrary(target='game', source=['src/game.cpp'])
-
 # deploy
+
 if platform.system() == "Linux":
     target = '../web/cpp/game.so'
 elif platform.system() == "Windows":
     target = '../web/cpp/game.pyd'
+
 env.Command(target, cpplib, copyLibBuilder)
 
 

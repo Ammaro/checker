@@ -17,7 +17,7 @@ MYAPP_VER_STRING = str(MYAPP_VER_MAJOR) + '.' + str(MYAPP_VER_MINOR) + '.' + MYA
 
 #web
 WWW_BROWSER_WINDOWS='chrome'
-WWW_BROWSER_LINUX='google-chrome'
+WWW_BROWSER_LINUX = 'google-chrome'
 WEB_SRV_PREFIX = 'api'
 WEB_SRV_HOST = '127.0.0.1'
 WEB_SRV_PORT = '1001'
@@ -35,6 +35,7 @@ Export('WEB_SRV_PREFIX WEB_SRV_HOST WEB_SRV_PORT WEB_CLIENT_HOST WEB_CLIENT_PORT
 Export('DB_NAME DB_USER DB_PASSWORD')
 
 vars = Variables('custom.py')
+vars.Add(EnumVariable('build', 'Build cpp', 'cpp', allowed_values=('cpp',), map={}, ignorecase=2))
 vars.Add(EnumVariable('r', 'Run the application, l: local lighttpd at \''+ WEB_CLIENT_HOST + ':' + WEB_CLIENT_PORT +'\''\
                       ', d: django internal at \''+ WEB_CLIENT_HOST + ':' + WEB_CLIENT_PORT + '\'',
                       'no', allowed_values=('l', 'd', 'no'), map={}, ignorecase=2))
@@ -64,6 +65,9 @@ else:
     WWW_BROWSER = WWW_BROWSER_WINDOWS
     BROWSER_CMD = 'start "" ' + WWW_BROWSER_WINDOWS + ' http://' + WEB_CLIENT_HOST + ':' + WEB_CLIENT_PORT
 
+
+if env['build'] == 'cpp':
+    SConscript(['cpp/SConscript'], exports=['env'])
 if env['r'] == 'l':
     os.system(BROWSER_CMD)
     os.system('lighttpd -f client/lighttpd.develop')

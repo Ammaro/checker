@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # help python find dll libraries for interop. with c++
 # TODO portability
 os.environ['PATH'] += 'C:\\Boost\\lib;'
-#sys.path += '.'
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'kw$@=pa)zdjmjx^6z65-+x3c5j+^ydyj1!t!@_q+z2qw06&1*i'
@@ -21,15 +21,17 @@ SECRET_KEY = 'kw$@=pa)zdjmjx^6z65-+x3c5j+^ydyj1!t!@_q+z2qw06&1*i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 TEMPLATE_DEBUG = True
-
+APPEND_SLASH=True
 ALLOWED_HOSTS = []
-
+STATIC_URL = '/static/'
 # Application definition
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.admin',
+    'django.contrib.staticfiles',
     'current',
     'version',
     'game'
@@ -49,7 +51,7 @@ ROOT_URLCONF = 'urls'
 WSGI_APPLICATION = 'wsgi.application'
 
 import version.models
-
+# DATABASE_ENGINE = "postgresql"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

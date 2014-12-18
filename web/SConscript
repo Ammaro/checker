@@ -27,5 +27,5 @@ def build_websrv_version( target, source, env):
 
 out_dir = ''
 file_ver_name = out_dir + 'version/version_gen.py'
-env.Command(file_ver_name, [], build_websrv_version )
+#env.Command(file_ver_name, [], build_websrv_version )
 

@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
   // Configurable paths for the application
   var appConfig = {
-    app: require('./bower.json').appPath || 'app',
+    app: require('./bower.json').appPath || '.',
     dist: 'dist'
   };
 
@@ -66,23 +66,31 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 1002,
+        port: 8888,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+        livereload: 35729,
+        directroy: '.',
+        debug: true
       },
+      proxies: [
+        {
+          context: '/ajax',
+          host: '127.0.0.1',
+          port: 8080,
+          xforward: false
+        }
+      ],
       livereload: {
         options: {
           open: true,
+
           middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect().use(
-                  '/bower_components',
-                  connect.static('./bower_components')
-              ),
-              connect.static(appConfig.app)
-            ];
+             var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
+             return [
+                proxy,
+                 connect().use('/bower_components', connect.static('./bower_components')),
+                 connect.static(appConfig.app)];
           }
         }
       },
@@ -242,17 +250,18 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer',
+      'configureProxies:server',
       'connect:livereload',
       'watch'
     ]);
   });
 
   grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
   });
 
   grunt.registerTask('test', [
+
     'clean:server',
     'concurrent:test',
     'autoprefixer',
