@@ -17,6 +17,9 @@ angular.module('checkerApp', ['ngRoute'])
                  }).when('/players', {
                          templateUrl:'views/players.html',
                          controller: 'playersCtrl'
+                 }).when('/play', {
+                         templateUrl: 'views/game.html',
+                         controller: ''
                  }).when('/register', {
                          templateUrl:'views/register.html',
                          controller: 'addPlayerCtrl'

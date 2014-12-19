@@ -107,7 +107,22 @@ body {
     background-color: #fdfbff;
 
 }
-
+.center {
+    text-align: center;
+    padding: 5%;
+    background: #FAF2FF;
+    width: 100%;
+    position: relative;
+    top: 10px;
+    left: 15px;
+}
+#game-checker-board {
+    border: 2px solid #1f0e2a;
+    border-radius: 3px;
+}
+#watchers {
+    background-color: #105cb6;
+}
 .player-profile {
     width: 80%;
     margin: 0 auto;
