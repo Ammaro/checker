@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-      "angular": "",
-      "angular-resource" : "",
-      "angular-route" : "",
-      "jquery": "",
-      "qunit": "",
-      "blanket": ""
+    "angular": "",
+    "angular-resource": "",
+    "angular-route": "",
+    "jquery": "",
+    "qunit": "",
+    "blanket": "",
+    "angular-material": "~0.6.1"
   },
   "main": "index.html",
   "ignore": [
@@ -18,5 +19,8 @@
     "test",
     "tests"
   ],
-  "appPath":"app"
+  "appPath": "app",
+  "resolutions": {
+    "angular": "1.3.x"
+  }
 }

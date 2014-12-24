@@ -19,10 +19,19 @@ angular.module('checkerApp', ['ngRoute'])
                          controller: 'playersCtrl'
                  }).when('/play', {
                          templateUrl: 'views/game.html',
-                         controller: ''
+                         controller: 'PlayCtrl'
+                 }).when('/rooms', {
+                         templateUrl: 'views/rooms.html',
+                         controller: 'RoomsCtrl'
                  }).when('/register', {
                          templateUrl:'views/register.html',
                          controller: 'addPlayerCtrl'
+                 }).when('/login', {
+                         templateUrl: 'views/login.html',
+                         controller: ''
+                 }).when('/tutorial', {
+                         templateUrl: 'views/tutorial.html',
+                         controllers:"TutorialCtrl"
                  }).otherwise( {
                      templateUrl: 'views/about.html',
                      controller: ''

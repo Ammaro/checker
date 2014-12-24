@@ -109,16 +109,14 @@ body {
 }
 .center {
     text-align: center;
-    padding: 5%;
+    padding: 1%;
     background: #FAF2FF;
     width: 100%;
     position: relative;
     top: 10px;
     left: 15px;
 }
-#game-checker-board {
-    border: 2px solid #1f0e2a;
-    border-radius: 3px;
+.game-checker-board {
 }
 #watchers {
     background-color: #105cb6;
@@ -128,3 +126,25 @@ body {
     margin: 0 auto;
     background-color: #009998;
 }
+.game-thumbnail {
+    padding: 10px;
+    margin: 10px;
+    border: 1px royalblue solid;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

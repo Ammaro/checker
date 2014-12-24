@@ -25,7 +25,6 @@ angular.module('checkerApp')
 				['$scope', '$timeout','serverApi', '$routeParams',
 				 function($scope, $timeout, serverApi, $routeParams) {
 					 var player_id = $routeParams['id'];
-					 console.log(player_id);
 					 serverApi.getPlayer(function(data){
 						 $scope.player = data;
 					 },player_id);
@@ -78,6 +77,15 @@ angular.module('checkerApp')
 								$scope.errorMessages.push(headers+" "+headers);
 						});
 					}
-				}]);
+				}])
+			.controller('TutorialCtrl', ['$scope', function($scope){
+
+		}]).controller('PlayCtrl', ['$scope', function($scope){
+						$scope.colors=['black', 'white','brown','yellow'];
+
+		}]).controller('RoomsCtrl', ['$scope', function($scope){
+						$scope.colors=['black', 'white','brown','yellow'];
+
+		}]);
 
 
